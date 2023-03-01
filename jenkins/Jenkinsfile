@@ -1,7 +1,17 @@
 pipeline{
-stage 'Checkout'
- node('slave') {
-  deleteDir()
-  checkout scm
- }
- }
+agent none
+stages{
+stage('Build'){
+    agent{
+        docker{image 'maven'}
+        }
+        steps{
+        sh "mvn packege - Dmaven.test.skip=true"
+        }
+    }
+    }
+        }
+
+
+
+}
