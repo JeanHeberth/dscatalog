@@ -1,12 +1,6 @@
-pipeline {
-    agent { Jenkinsfile { image 'maven:3.9.0-eclipse-temurin-11' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
-    }
-}
-
+stage 'Checkout'
+ java('slave') {
+  deleteDir()
+  checkout scm
+ }
 
